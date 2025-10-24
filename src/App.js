@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
+import Sidebar from './sidebar/Sidebar';
+import Content from './content/content';
+import useScrollSpy from './hooks/useScrollSpy';
+import Header from './content/Header';
+import DebugScreenSize from './DebugScreenSize';
 function App() {
+  const sectionIds = ['about', 'skills', 'education', 'subscribe', 'services', 'portfolio', 'contact'];
+  const activeSection = useScrollSpy(sectionIds);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+          <Header activeSection={activeSection} /> {/* 👈 Add here */}
+
+    <div className="wrapper">
+     <Sidebar activeSection={activeSection}/>
+     <Content/>
+     <DebugScreenSize/>
     </div>
+    </>
   );
 }
 
