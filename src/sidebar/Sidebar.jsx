@@ -89,7 +89,7 @@ const Sidebar = ({ activeSection = 'about' }) => {
 
         <div className="d-flex align-items-end justify-content-between w-100">
           <a
-            href="/rajperfect.pdf"
+            href="/mycv.pdf"
             download
             className="btn btn-outline-primary flex-fill mx-1"
           >
