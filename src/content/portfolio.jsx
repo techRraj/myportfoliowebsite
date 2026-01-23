@@ -34,6 +34,26 @@ const Portfolio = ({ id }) => {
       title: 'Hospital Management System',
       description: 'Patient records, appointments, billing.'
     },
+    {
+      src: '/img/resumeBuilder.png',
+      category: 'second',
+      title: 'Professinal Resume Builder ',
+      description: 'vip tamplates, Personal Dashboard, Resume genrater'
+    },
+
+    {
+      src: '/img/WeatherDashboard.png',
+      category: 'second',
+      title: 'Pro weather Dashboard ',
+      description: 'Popular cities quick access, Feels like temperature, Visibility and pressure data,Last updated timestamp'
+    },
+
+     {
+      src: '/img/curruncyconvrter.png',
+      category: 'second',
+      title: 'Pro currency conveter',
+      description: ' instantly calculate the exchange value, Feels like temperature, Visibility anddifferent currencies based on current market rates, businesses conducting cross-border trade'
+    },
   ];
 
   const filteredImages = filter === '*'
@@ -163,7 +183,18 @@ const Portfolio = ({ id }) => {
             )
           }}
         />
+        <div className='col-12 text-center "'>
+        <div className='container px-3'>
+        <div className='raw'>
+         <div className="col-12">
+              <h4 className="title position-relative  mb-4 text-primary">for more detail about our project  you can se my github and linkdin account also or connet with whatsApp.</h4>
+            </div>
+         
+         </div>
+         </div>
+         </div>
       </section>
+      
     </>
   );
 };

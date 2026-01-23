@@ -1044,6 +1044,7 @@ pre code {
   .col-md-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
+    padding-bottom: 10px;
   }
   .col-md-8 {
     flex: 0 0 66.66667%;

@@ -34,9 +34,9 @@ const About = ({ id }) => {
             <div className="col-12 col-sm-6 py-1">
               <h5 className="d-inline text-primary me-2">Name:</h5> Rajkumar Chourasiya
             </div>
-            <div className="col-12 col-sm-6 py-1">
+            {/* <div className="col-12 col-sm-6 py-1">
               <h5 className="d-inline text-primary me-2">Birthday:</h5> 28 June 2002
-            </div>
+            </div> */}
             <div className="col-12 col-sm-6 py-1">
               <h5 className="d-inline text-primary me-2">Degree:</h5> B.Tech Computer Science
             </div>
