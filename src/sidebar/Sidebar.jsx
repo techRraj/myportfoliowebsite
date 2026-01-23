@@ -46,10 +46,13 @@ const Sidebar = ({ activeSection = 'about' }) => {
         />
         <h1 className="mt-2">Rajkumar Chourasiya</h1>
 
-        <div className="mb-4" style={{ height: '22px' }}>
-          <h4 className="typed-text-output d-inline-block text-body" ref={typedRef}></h4>
-        </div>
-
+       {/* Typed.js Output */}
+<h4
+  className="typed-text-output d-inline-block text-body mb-4"
+  ref={typedRef}
+>
+  <span className="sr-only">Developer roles typing animation</span>
+</h4>
         {/* 👇 ScrollSpy Indicator */}
         <div className="mb-4 py-2 bg-light rounded">
           <small className="text-muted d-block">Now viewing:</small>
