@@ -9,6 +9,7 @@ const Sidebar = ({ activeSection = 'about' }) => {
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
       strings: [
+        'AI AGENT DEVLOPER',
         'MERN Stack Developer',
         'Full Stack Developer',
         'Android Developer',
@@ -40,7 +41,7 @@ const Sidebar = ({ activeSection = 'about' }) => {
       
  <img
           className="w-100 img-fluid mb-4 rounded-circle"
-         src="/img/profileraj.png"
+         src="/img/dpRaj.jpeg"
           alt="Rajkumar Chourasiya"
           style={{ maxWidth: '100%', margin: '0 auto' }}
         />
@@ -92,7 +93,7 @@ const Sidebar = ({ activeSection = 'about' }) => {
 
         <div className="d-flex align-items-end justify-content-between w-100">
           <a
-            href="/mycv.pdf"
+            href="/Rajkumar_FullStack_AI_Engineer.pdf"
             download
             className="btn btn-outline-primary flex-fill mx-1"
           >

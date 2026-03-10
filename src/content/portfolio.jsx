@@ -54,6 +54,13 @@ const Portfolio = ({ id }) => {
       title: 'Pro currency conveter',
       description: ' instantly calculate the exchange value, Feels like temperature, Visibility anddifferent currencies based on current market rates, businesses conducting cross-border trade'
     },
+
+     {
+      src: '/img/Ai-Agent.png',
+      category: 'second',
+      title: 'Ai Agent for lead genrating',
+      description: ' An AI Agent for lead generation is a smart assistant that automates prospecting and qualifies potential customers.It helps businesses save time, personalize outreach, and boost conversions by focusing only on high‑value leads.'
+    },
   ];
 
   const filteredImages = filter === '*'

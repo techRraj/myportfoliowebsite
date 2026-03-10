@@ -91,6 +91,15 @@ const Skills = ({id}) => {
                 <div className="progress-bar bg-dark" role="progressbar" aria-valuenow={95} aria-valuemin={0} aria-valuemax={100} style={{ width: '95%' }} />
               </div>
             </div>
+            <div className="skill mb-4">
+              <div className="d-flex justify-content-between">
+                <p className="mb-2">AI Agent Devloper </p>
+                <p className="mb-2">85%</p>
+              </div>
+              <div className="progress">
+                <div className="progress-bar bg-dark" role="progressbar" aria-valuenow={95} aria-valuemin={0} aria-valuemax={100} style={{ width: '95%' }} />
+              </div>
+            </div>
 
             <div className="skill mb-4">
               <div className="d-flex justify-content-between">
@@ -131,6 +140,9 @@ const Skills = ({id}) => {
             </div>
 
           </div>
+
+          
+
         </div>
       </div>
       <div className="container bg-white py-5">
