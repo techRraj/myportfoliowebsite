@@ -1,5 +1,5 @@
 // src/components/Portfolio.jsx
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -8,8 +8,9 @@ const Portfolio = ({ id }) => {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState('*');
-
-  const images = [
+  
+  // Memoize images array to prevent recreation on every render
+  const images = useMemo(() => [
     {
       src: '/img/portfolio-1.png',
       category: 'first',
@@ -40,32 +41,47 @@ const Portfolio = ({ id }) => {
       title: 'Professinal Resume Builder ',
       description: 'vip tamplates, Personal Dashboard, Resume genrater'
     },
-
     {
       src: '/img/WeatherDashboard.png',
       category: 'second',
       title: 'Pro weather Dashboard ',
       description: 'Popular cities quick access, Feels like temperature, Visibility and pressure data,Last updated timestamp'
     },
-
-     {
+    {
       src: '/img/curruncyconvrter.png',
       category: 'second',
       title: 'Pro currency conveter',
       description: ' instantly calculate the exchange value, Feels like temperature, Visibility anddifferent currencies based on current market rates, businesses conducting cross-border trade'
     },
-
-     {
+    {
       src: '/img/Ai-Agent.png',
       category: 'second',
       title: 'Ai Agent for lead genrating',
       description: ' An AI Agent for lead generation is a smart assistant that automates prospecting and qualifies potential customers.It helps businesses save time, personalize outreach, and boost conversions by focusing only on high‑value leads.'
     },
-  ];
+  ], []);
 
-  const filteredImages = filter === '*'
-    ? images
-    : images.filter(img => img.category === filter);
+  const filteredImages = useMemo(() => 
+    filter === '*' ? images : images.filter(img => img.category === filter),
+    [filter, images]
+  );
+
+  const handleFilterChange = useCallback((newFilter) => {
+    setFilter(newFilter);
+  }, []);
+
+  const handleImageClick = useCallback((i) => {
+    setIndex(i);
+    setOpen(true);
+  }, []);
+
+  const handleCloseLightbox = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  const handleView = useCallback(({ index }) => {
+    setIndex(index);
+  }, []);
 
   return (
     <>
@@ -81,19 +97,19 @@ const Portfolio = ({ id }) => {
               <ul className="list-inline mb-0" id="portfolio-flters">
                 <li
                   className={`btn btn-outline-primary ${filter === '*' ? 'active' : ''}`}
-                  onClick={() => setFilter('*')}
+                  onClick={() => handleFilterChange('*')}
                 >
                   <i className="fa fa-star mr-2" />All
                 </li>
                 <li
                   className={`btn btn-outline-primary ${filter === 'first' ? 'active' : ''}`}
-                  onClick={() => setFilter('first')}
+                  onClick={() => handleFilterChange('first')}
                 >
                   <i className="fi fi-rs-magic-wand mr-2" />Design
                 </li>
                 <li
                   className={`btn btn-outline-primary ${filter === 'second' ? 'active' : ''}`}
-                  onClick={() => setFilter('second')}
+                  onClick={() => handleFilterChange('second')}
                 >
                   <i className="fi fi-rs-code-window mr-2" />Development
                 </li>
@@ -106,8 +122,8 @@ const Portfolio = ({ id }) => {
                 <div
                   key={i}
                   className={`col-12 col-md-6 portfolio-item ${img.category}`}
-                  style={{ cursor: 'pointer', maxWidth: '400px' }} // Optional: limit max width
-                  onClick={() => { setIndex(i); setOpen(true); }}
+                  style={{ cursor: 'pointer', maxWidth: '400px' }}
+                  onClick={() => handleImageClick(i)}
                 >
                   {/* Card Container */}
                   <div
@@ -126,7 +142,7 @@ const Portfolio = ({ id }) => {
                     <div
                       className="position-relative"
                       style={{
-                        height: '200px', // Fixed height for all images
+                        height: '200px',
                         backgroundColor: '#f8f9fa',
                         display: 'flex',
                         alignItems: 'center',
@@ -177,10 +193,10 @@ const Portfolio = ({ id }) => {
         {/* Lightbox */}
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
+          close={handleCloseLightbox}
           slides={filteredImages.map(img => ({ src: img.src, title: img.title, description: img.description }))}
           index={index}
-          on={{ view: ({ index }) => setIndex(index) }}
+          on={{ view: handleView }}
           render={{ 
             caption: ({ slide }) => (
               <div style={{ textAlign: 'center', padding: '10px', background: 'rgba(0,0,0,0.7)', color: 'white' }}>
