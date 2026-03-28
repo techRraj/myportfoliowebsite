@@ -1,12 +1,24 @@
 // src/components/Sidebar.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import Typed from 'typed.js';
 
-// External links → use <a>, not <Link>
 const Sidebar = ({ activeSection = 'about' }) => {
   const typedRef = useRef(null);
+  
+  // Memoize section labels to prevent recreation on every render
+  const sectionLabels = useMemo(() => ({
+    about: 'About Me',
+    skills: 'Skills',
+    education: 'Education',
+    subscribe: 'Subscribe',
+    services: 'Services',
+    portfolio: 'Portfolio',
+    contact: 'Contact'
+  }), []);
 
   useEffect(() => {
+    if (!typedRef.current) return;
+    
     const typed = new Typed(typedRef.current, {
       strings: [
         'AI AGENT DEVLOPER',
@@ -23,17 +35,6 @@ const Sidebar = ({ activeSection = 'about' }) => {
 
     return () => typed.destroy();
   }, []);
-
-  // Section label mapping
-  const sectionLabels = {
-    about: 'About Me',
-    skills: 'Skills',
-    education: 'Education',
-    subscribe: 'Subscribe',
-    services: 'Services',
-    portfolio: 'Portfolio',
-    contact: 'Contact'
-  };
 
   return (
     <div className="sidebar">
